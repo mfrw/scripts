@@ -16,15 +16,16 @@
 
 
 import requests
+import getpass
 s = requests.Session()
 r = s.get('http://www.google.com')
 #uname = Your_username
 #passd = Your_passwd
 
-if 'IIIT-D' in r.content:
-    uname = raw_input('Username:')
-    passd = raw_input('Password:')
+if 'IIIT-D' in str(r.content):
+    uname = input('Username:')
+    passd = getpass.getpass()
     login_data = dict(username=uname, magic=r.content[6354:6370],password=passd)
     r = s.post(r.url, data=login_data)
 else:
-    print 'dude you are already connected'
+    print ('dude you are already connected')
