@@ -1,0 +1,10 @@
+docker run -d --rm  --net host  --name tor jess/tor
+
+
+-d			=> detached
+--net host		=> use the host network
+--rm			=> remove container after exit
+--name			=> name of container
+
+
+will expose 9050 port for use, open firefox, setting advanced connectivity and in proxy route it though 9050 ... via socks v5
