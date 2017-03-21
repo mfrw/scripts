@@ -1,4 +1,4 @@
-qemu-system-x86_64 -nographic -no-reboot -kernel arch/x86_64/boot/bzImage -initrd ./../busybox/test_build/rootfs_bb.gz -append "panic=1 console=ttyS0 rdinit=/bin/sh"
+qemu-system-x86_64 -nographic -no-reboot -kernel arch/x86_64/boot/bzImage -m size=512 -initrd ./../busybox/test_build/rootfs_bb.gz -append "panic=1 console=ttyS0 rdinit=/bin/sh"
 
 
 
@@ -6,6 +6,8 @@ qemu-system-x86_64 -nographic -no-reboot -kernel arch/x86_64/boot/bzImage -initr
 -nographic => on this tty only dont open a new window
 -kernel	   => bzImage of kernel to boot
 -initrd    => initial ramdisk from which to boot (cpio)
+-m	   => give different ram size params
+		size=512 (size of ram given)
 -append    => the kernel commandline 
 		panic	=> reboot on panic
 		console => throw ouptut from serial interface
@@ -18,3 +20,4 @@ find . | cpio -o -H newc | gzip > name_of_cpio.gz
 make sure you compile statically
 
 As an added bonus just add go src code to make it a fully functional dev env
+found
