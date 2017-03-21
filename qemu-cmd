@@ -20,4 +20,3 @@ find . | cpio -o -H newc | gzip > name_of_cpio.gz
 make sure you compile statically
 
 As an added bonus just add go src code to make it a fully functional dev env
-found
