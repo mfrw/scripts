@@ -1,0 +1,3 @@
+Important points that I often forget :) [git em so that dumb me doesn't go on a rabid fit of googling in panic]
+
+compile with flag -D_GLIBCXX_DEBUG, to enable debugging 
