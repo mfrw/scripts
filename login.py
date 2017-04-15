@@ -26,6 +26,7 @@ if 'IIIT-D' in str(r.content):
     uname = input('Username:')
     passd = getpass.getpass()
     login_data = dict(username=uname, magic=r.content[6354:6370],password=passd)
+    # The numbers aint magic 6354:6370, I just dont want to whip-up a full  blown re search If I know where is the magic cookie (speed guys speed)
     r = s.post(r.url, data=login_data)
 else:
     print ('dude you are already connected')
