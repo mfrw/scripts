@@ -1,0 +1,7 @@
+gotty is an impressive program to share you terminal screen
+Use it to share a tmux session:
+
+gotty tmux new -A -s gotty
+
+and then connect to that instance of tmux via:
+tmux at -t gotty
