@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"log"
-	"net"
 	"net/http"
 	"os"
 )
@@ -32,36 +31,11 @@ func main() {
 	} else {
 		path = os.Args[1]
 	}
-
-	/* get IP Addrs of Interfaces */
-	ifaces, err := net.Interfaces()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Could not get Interfaces\n")
-		os.Exit(-1)
+	port := "8080"
+	if len(os.Args) > 2 {
+		port = os.Args[2]
 	}
-	for _, i := range ifaces {
-		addrs, err := i.Addrs()
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "Could not get Addrs\n")
-			os.Exit(-1)
-		}
-
-		for _, addr := range addrs {
-			var ip net.IP
-			switch v := addr.(type) {
-			case *net.IPNet:
-				ip = v.IP
-			case *net.IPAddr:
-				ip = v.IP
-			}
-			fmt.Println(ip.String())
-			// process IP address
-		}
-	}
-	/* done getting ip addrs */
-
-	fmt.Println("Try any of those ipaddrs with xx.xx.xx.xx:8080")
-	fmt.Println("Server starting on Port 8080")
+	fmt.Println("Server starting on Port " + port)
 	fmt.Println("Server Hosting: ", path)
 	log.Fatal(http.ListenAndServe(":8080", http.FileServer(http.Dir(path))))
 }
