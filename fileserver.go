@@ -8,6 +8,7 @@ import (
 	"os"
 )
 
+// usage help --help or -help
 func main() {
 	/* A static web server serving a current path
 	It can also be used a hacky file tx program.
@@ -19,12 +20,17 @@ func main() {
 	GOOS=linux   go build fileserver.go // for linux
 	*/
 
+	if len(os.Args) < 2 {
+		fmt.Println("Please run with --help for more options")
+	}
+
 	tpath, err := os.Getwd() // get the current working dir
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Some bad stuff occured\n")
 		os.Exit(-1)
 	}
 
+	// get the flags from user
 	path := flag.String("path", tpath, "Path of the directory")
 	port := flag.String("port", "8080", "Port on which to Host")
 	flag.Parse()
