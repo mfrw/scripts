@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"net/http"
@@ -18,24 +19,17 @@ func main() {
 	GOOS=linux   go build fileserver.go // for linux
 	*/
 
-	path := ""
-	if len(os.Args) != 2 {
-		fmt.Fprintf(os.Stderr, "Usage: %s [path]\n", os.Args[0])
-		fmt.Fprintf(os.Stderr, "Using current dir as path\n\n")
-		tpath, err := os.Getwd() // get the current working dir
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "Some bad stuff occured\n")
-			os.Exit(-1)
-		}
-		path = tpath
-	} else {
-		path = os.Args[1]
+	tpath, err := os.Getwd() // get the current working dir
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Some bad stuff occured\n")
+		os.Exit(-1)
 	}
-	port := "8080"
-	if len(os.Args) > 2 {
-		port = os.Args[2]
-	}
-	fmt.Println("Server starting on Port " + port)
-	fmt.Println("Server Hosting: ", path)
-	log.Fatal(http.ListenAndServe(":8080", http.FileServer(http.Dir(path))))
+
+	path := flag.String("path", tpath, "Path of the directory")
+	port := flag.String("port", "8080", "Port on which to Host")
+	flag.Parse()
+
+	fmt.Println("Server starting on Port " + *port)
+	fmt.Println("Server Hosting: ", *path)
+	log.Fatal(http.ListenAndServe(":"+*port, http.FileServer(http.Dir(*path))))
 }
