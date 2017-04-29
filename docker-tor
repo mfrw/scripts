@@ -8,3 +8,7 @@ docker run -d --rm  --net host  --name tor jess/tor
 
 
 will expose 9050 port for use, open firefox, setting advanced connectivity and in proxy route it though 9050 ... via socks v5
+
+/* to run gui apps  , do a xhost + , so that the container is allowed to connect*/
+-v /tmp/.X11-unix:/tmp/.X11-unix
+-e DISPLAY=unix$DISPLAY 
