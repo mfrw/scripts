@@ -4,5 +4,5 @@ docker run -it          \
        -h jikesbuild-j6 \
        -v $HOME:$HOME   \
        --user $USER     \
-       -w $PWD
+       -w $PWD		\
        mfrw/jikes-j6
