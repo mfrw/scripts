@@ -1,0 +1,7 @@
+#!/bin/bash
+
+docker run -it          \
+       -h jikesbuild-j6 \
+       -v $HOME:$HOME   \
+       --user $USER     \
+       mfrw/jikes-j6
