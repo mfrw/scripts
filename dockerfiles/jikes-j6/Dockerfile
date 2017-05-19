@@ -13,5 +13,5 @@ RUN useradd -u 1000 -U mfrw
 RUN useradd -u 1001 -U vivek
 RUN useradd -u 1002 -U alind
 
-ENTRYPOINT /usr/bin/bash
+ENTRYPOINT /bin/bash
 
