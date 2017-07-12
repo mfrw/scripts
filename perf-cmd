@@ -1,0 +1,7 @@
+Important flags for perf
+
+perf record -g ... | -g => call graph
+perf report -g 'graph,0.5,caller' 
+	graph  => there are two options fractals/graph
+	0.5    => a filter for noisy functions
+	caller => invert the call graph (instead of callees show callers
