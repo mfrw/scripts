@@ -2,5 +2,18 @@ The swiss army knife :-
 
 sshfs -o Ciphers=arcfour -o Compression=no server://path /local_path
 
-archfour    :=> Not the safest of ciphers, but who cares (its quite fast)
-Compression :=> For once leave the CPU alone, (This considerably goes easy on the cpu)
+Ciphers=archfour	:=> Not the safest of ciphers, but who cares (its quite fast)
+Compression=no		:=> For once leave the CPU alone, (This considerably goes easy on the cpu)
+
+
+some more options:
+
+-o cache=yes		:= allow caching 
+-o kernel_cache		:= turn on kernel caching
+-o compression
+
+
+Umount :
+
+fusermount -u /local_path
+
