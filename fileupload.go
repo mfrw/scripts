@@ -23,6 +23,7 @@ func handler(res http.ResponseWriter, req *http.Request) {
 			http.Error(res, err.Error(), 500)
 			return
 		}
+		fmt.Println("File: ", hdr.Filename)
 
 		defer dst.Close()
 		io.Copy(dst, src)
