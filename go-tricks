@@ -7,6 +7,6 @@ and install a handler := http.ListenAndServe(":8080", nil)
 
 You can also find if your porgram has a profiling endpoint by
 
-lsof -Pp $(pidof your-program) | grep LISTEN
+lsof -Pp $(pidof your-program) | grep less
 -P => Dont name ports as services (dump raw numbers)
 -p => pid we are interested in
