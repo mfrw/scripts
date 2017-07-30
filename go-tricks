@@ -1,0 +1,12 @@
+Use pprof for profiling your go code
+
+import _ "net/http/pprof"
+
+and install a handler := http.ListenAndServe(":8080", nil)
+
+
+You can also find if your porgram has a profiling endpoint by
+
+lsof -Pp $(pidof your-program) | grep LISTEN
+-P => Dont name ports as services (dump raw numbers)
+-p => pid we are interested in
