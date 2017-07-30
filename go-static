@@ -3,4 +3,6 @@ use options:
 
 COG_ENABLED=0 GOOS=linux go build -tags netgo -a -v
 
+	-a => rebuild already compiled code
+	-v => verbose
 The downside of this is an ovbious increase in the size of the binary and significant compile time
