@@ -1,0 +1,5 @@
+Set up password less login via ssh:
+
+* Copy your public key over to the remote-host
+
+ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote-host
