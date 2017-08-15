@@ -10,3 +10,11 @@ You can also find if your porgram has a profiling endpoint by
 lsof -Pp $(pidof your-program) | grep less
 -P => Dont name ports as services (dump raw numbers)
 -p => pid we are interested in
+
+##########
+
+By default, Go does not maintain x86 frame pointers, which means that perf
+cannot sample from Go's execution reliably. To build a Go 1.5 or later
+toolchain that works with perf, use: 
+
+GOEXPERIMENT=framepointer ./make.bash
