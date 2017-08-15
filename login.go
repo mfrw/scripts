@@ -1,71 +1,77 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"net/url"
-	"os"
-	"strings"
 	"syscall"
-	"unsafe"
+
+	"golang.org/x/crypto/ssh/terminal"
 )
 
-/* A better solution here is that Hard Code the
-username and pass, then build, it would be difficult
-to get the password that way
-*/
-
-func main() {
-	resp, err := http.Get("http://www.google.com/")
-	if err != nil {
-		fmt.Println("Error encountered")
-	}
+// Gets the credentials from the user and returs them as strings
+func getCreds() (string, string) {
 	var username string
-	var password string
-	flag.StringVar(&username, "u", "falak16018", "Your username")
-	flag.Parse()
-
-	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-	finalURL := resp.Request.URL.String()
-	bdy := string(body)
-	if strings.Contains(bdy, "IIIT-D") {
-		fmt.Print("Password: ")
-		terminalEcho(false)
-		fmt.Scanln(&password)
-		terminalEcho(true)
-		fmt.Println("")
-		http.PostForm(finalURL, url.Values{"username": {username}, "magic": {bdy[6354:6370]}, "password": {password}})
-		//		fmt.Println("Logged in successfully")
-	} else {
-		fmt.Println("Already Logged in dude")
+	fmt.Print("Username: ")
+	fmt.Scanln(&username)
+	fmt.Print("Password: ")
+	password, err := terminal.ReadPassword(int(syscall.Stdin))
+	if err != nil {
+		log.Fatalln(err)
 	}
+	fmt.Println("")
+	return username, string(password)
 }
 
-func terminalEcho(show bool) {
-	// Enable or disable echoing terminal input. This is useful specifically for
-	// when users enter passwords.
-	// calling terminalEcho(true) turns on echoing (normal mode)
-	// calling terminalEcho(false) hides terminal input.
-	var termios = &syscall.Termios{}
-	var fd = os.Stdout.Fd()
+// Login takes in username and password and attempts to login
+// If successfull returns the logout URL
+func Login(username, password string) (string, error) {
+	res, err := http.Get("http://www.google.com/")
+	if err != nil {
+		return "", err
+	}
+	defer res.Body.Close()
 
-	if _, _, err := syscall.Syscall(syscall.SYS_IOCTL, fd,
-		syscall.TCGETS, uintptr(unsafe.Pointer(termios))); err != 0 {
-		return
+	if res.Request.URL.Hostname() != "auth.iiitd.edu.in" {
+		return "", fmt.Errorf("Already Connected")
+	}
+	// get magic from URL and reply URL
+	magic := res.Request.URL.RawQuery
+	u := res.Request.URL.String()
+
+	// pack data
+	data := url.Values{
+		"username": {username},
+		"magic":    {magic},
+		"password": {password},
 	}
 
-	if show {
-		termios.Lflag |= syscall.ECHO
+	resp, err := http.PostForm(u, data)
+	if err != nil {
+		return "", err
+	}
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return "", err
+	}
+
+	return string(body[4816:4870]), nil
+
+}
+
+//  TODO: Add functionality to get password from a file //
+
+func main() {
+	username, password := getCreds()
+
+	logout, err := Login(username, password)
+	if err != nil {
+		log.Println("Could not login", err)
 	} else {
-		termios.Lflag &^= syscall.ECHO
-	}
-
-	if _, _, err := syscall.Syscall(syscall.SYS_IOCTL, fd,
-		uintptr(syscall.TCSETS),
-		uintptr(unsafe.Pointer(termios))); err != 0 {
-		return
+		fmt.Println("LogoutURL: ", logout)
 	}
 }
