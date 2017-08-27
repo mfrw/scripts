@@ -1,0 +1,3 @@
+docker-ips() {
+	    docker inspect --format='{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$@"
+}
