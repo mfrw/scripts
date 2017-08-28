@@ -38,6 +38,7 @@ relies_on(){
 }
 
 
+# get ip of containers
 docker-ip() {
-docker inspect --format='[{{ .Id }}]: {{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$@"
+	docker inspect --format='[{{ .Id }}]: {{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$@"
 }
