@@ -21,3 +21,17 @@ make sure you compile statically
 
 As an added bonus just add go src code to make it a fully functional dev env
 To quit from qemu [Ctrl-A X]
+
+####### To mount Proc ######
+
+mount -t proc none proc
+
+
+
+#### Incase of chroots #####
+
+cd /mnt/arch # or where you are preparing the chroot dir
+
+mount -t proc proc proc/
+mount -t sysfs sys sys/
+mount -o bind /dev dev/
