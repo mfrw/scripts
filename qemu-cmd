@@ -19,6 +19,10 @@ Creating a cpio :
 find . | cpio -o -H newc | gzip > name_of_cpio.gz
 make sure you compile statically
 
+Extracting a cpio :
+mkdir target; cd target
+cpio -idv < /path/random.cpio
+
 As an added bonus just add go src code to make it a fully functional dev env
 To quit from qemu [Ctrl-A X]
 
