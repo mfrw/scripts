@@ -1,6 +1,5 @@
-To check the battery via terminal
-
-Use the /sys interface
-
+#!/bin/sh
+#To check the battery via terminal
+#Use the /sys interface
 
 cat /sys/class/power_supply/BAT1/uevent
