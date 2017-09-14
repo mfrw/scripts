@@ -1,0 +1,14 @@
+set imap_user = "f********z@gmail.com"                       
+set imap_pass = "********************"                                    
+set smtp_url = "smtp://f********z@smtp.gmail.com:587/"       
+set smtp_pass = "********************" 
+set from = "f********z@gmail.com"                            
+set realname = "Muhammad Falak R Wani"                                  
+set folder = "imaps://imap.gmail.com:993"                     
+set spoolfile = "+INBOX"                                      
+set postponed = "+[Gmail]/Drafts"                             
+set header_cache = ~/.mutt/mutt.gmail/cache/headers            
+set message_cachedir = ~/.mutt/mutt.gmail/cache/bodies         
+set certificate_file = ~/.mutt/mutt.gmail/certificates   
+set editor="vim +':set tw=77' +':set wrap'"
+auto_view text/html
