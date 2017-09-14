@@ -1,6 +1,6 @@
 #mfrw mutt config for home and iiitd
-folder-hook 'falakreyaz@gmail.com'   'source ~/.mutt/gmail'
-folder-hook 'falak16018@iiitd.ac.in' 'source ~/.mutt/iiitd'
+folder-hook 'f********z@gmail.com'   'source ~/.mutt/gmail'
+folder-hook 'f********8@iiitd.ac.in' 'source ~/.mutt/iiitd'
 source ~/.mutt/gmail
 
 macro index <f2> '<sync-mailbox><refresh><enter-command>source ~/.mutt/gmail<enter><change-folder>!<enter>'
