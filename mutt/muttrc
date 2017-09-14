@@ -1,0 +1,42 @@
+#mfrw mutt config for home and iiitd
+folder-hook 'f********z@gmail.com'   'source ~/.mutt/gmail'
+folder-hook 'f********8@iiitd.ac.in' 'source ~/.mutt/iiitd'
+
+#default folder is gmail so source it first
+source ./gmail
+
+# Put shortcuts to mailboxes F2 => gmail, and F3 => iiitd
+macro index <f2> '<sync-mailbox><refresh><enter-command>source ./gmail<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><refresh><enter-command>source ./iiitd<enter><change-folder>!<enter>'
+
+# Fetch new mail
+bind index G imap-fetch-mail
+
+## General options
+set imap_check_subscribed
+set imap_keepalive = 300
+unset imap_passive
+set mail_check = 60
+set mbox_type=mbox
+set edit_headers=yes
+set sort=threads
+
+# Some other misc settings
+set sidebar_visible
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set mail_check_stats
+bind index,pager B sidebar-toggle-visible
+set sidebar_short_path
+set sidebar_delim_chars="/"
+set sidebar_folder_indent
+# Indent folders whose names we've shortened
+set sidebar_indent_string="  "
+# # Indent with two spaces
+
+bind index,pager < sidebar-prev
+bind index,pager , sidebar-next
+bind index,pager M sidebar-open
+
+
+# Color scheme
+source ./vombadite.color
