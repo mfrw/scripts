@@ -6,10 +6,10 @@ des    => enc algo {use list-ciphers to get a list and then use any}
 -out   => out file (enc)
 -k     => password
 -salt  => ovbious
--a     => base64 (easier to email .. gmail does not complain about it)
+-a     => ASCII Armored
 
 DECRYPTION
-openssl des  -a -d -salt -in large_file.txt -k "abc123" -out large_file.txt.enc
+openssl des  -a -d -salt -in large_file.txt.enc -k "abc123" -out large_file.txt
 
 -d     => decrypt
 
