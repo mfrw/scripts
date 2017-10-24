@@ -1,0 +1,11 @@
+https://computers.tutsplus.com/tutorials/how-to-fix-slow-and-non-loading-webpages-in-safari--mac-51338
+
+Safari, from version 5.0.1 onwards, employs a technique known as DNS
+prefetching. This is designed to ensure that webpages load faster. On occasion
+it can, unfortunately, have the opposite effect meaning that webpages can take
+a long time to load. Or simply not load at all.
+
+tl;dr
+
+defaults write com.apple.safari WebKitDNSPrefetchingEnabled -boolean false
+
