@@ -13,3 +13,10 @@ https://www.youtube.com/watch?v=Di7qAVidy1Y (NextGen ToR services)
 https://golangnews.com/stories/2923-video-a-python-and-a-gopher-walk-into-a-bar
 https://www.youtube.com/watch?v=sDTGhIqyMjo (rob <commander> pike)
 https://github.com/nikhita/tech-conferences-india/blob/master/year-pages/2018-conferences-list.md (TECH CONF's INDIA)
+https://making.pusher.com/golangs-real-time-gc-in-theory-and-practice/ (Golang GC)
+https://sohlich.github.io/post/go_makefile/ (Makefiles for go)
+http://dtrace.org/blogs/wesolows/2014/12/29/golang-is-trash/ (Golang Rant for <commander> for the plan 9 compiler and insanity in linker-- its weired)
+https://blog.minio.io/accelerating-sha256-by-100x-in-golang-on-arm-1517225f5ff4
+http://danmux.com/posts/what_golang_isnt/
+https://making.pusher.com/per-ip-rate-limiting-with-iptables/ (DOPE rate limiting by iptables)
+https://making.pusher.com/redis-pubsub-under-the-hood/ (Reddis pub/sub)
