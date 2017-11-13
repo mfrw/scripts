@@ -7,3 +7,4 @@ http://chrisseaton.com/rubytruffle/jokerconf17/
 https://www.youtube.com/watch?v=LA-gNoxSLCE (Cloudflare log processing)
 https://www.eli5bitcoin.com/ (Explain Like I'm 5)
 https://blog.golang.org/go15gc (go gc amazing)
+https://rakyll.org/pprof-ui/ (pprof -- universal, with some trickery can read perf.data also)
