@@ -5,7 +5,7 @@
 #cat /sys/class/power_supply/BAT1/uevent
 # just because not every manufacturer uses BAT1 for the primary battery.
 
-bat_addr=`ls /sys/class/power_supply | grep "BAT"`
+bat_addr=`ls /sys/class/power_supply | grep "BAT" | head -1` # Considering only BAT0 or BAT1
 
 # Well I dont want to see the manufacturer of the battery. I just want to check the remaining power left.
 out_full=`cat /sys/class/power_supply/$bat_addr/uevent | grep "POWER_SUPPLY_CHARGE_FULL="`
