@@ -18,3 +18,23 @@ cannot sample from Go's execution reliably. To build a Go 1.5 or later
 toolchain that works with perf, use: 
 
 GOEXPERIMENT=framepointer ./make.bash
+
+
+##########
+Update all packages
+
+go get -u all
+
+
+###########
+Go ssa details for the function `main`
+
+GOSSAFUNC=main go build
+
+
+
+###
+To benchmark the library use
+go test -bench=Encode
+
+then compare benchmarks by benchstat
