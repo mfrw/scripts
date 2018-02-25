@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+usage="$(basename "$0") user -- Find the email addresses of followers of any GitHub user"
+
+if [ "$1" == "-h" ] || [ "$1" == "--help" ] || [ -z "$1" ] || [ "$1" == "-a" ] && [ -z "$2" ] || [ "$1" == "-g" ] && [ -z "$2" ] ; then
+	echo "$usage"
+	exit
+fi
+
+followers=`curl -s https://api.github.com/users/$1/followers | grep '\"login\"' | sed -e's/[,|"|:]//g' | awk '{print $(NF)}'`
+
+for id in $followers; do 
+	user_email=`curl -s https://api.github.com/users/$id | grep '\"email"' | sed -e's/[,|"|:]//g' | awk '{print $(NF)}'`
+	echo $id
+	echo $user_email
+done
