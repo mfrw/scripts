@@ -39,3 +39,8 @@ cd /mnt/arch # or where you are preparing the chroot dir
 mount -t proc proc proc/
 mount -t sysfs sys sys/
 mount -o bind /dev dev/
+
+
+#### Mount dev ######
+
+mount -t devtmpfs dev /dev
