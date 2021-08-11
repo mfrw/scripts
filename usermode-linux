@@ -1,0 +1,5 @@
+how to run usermode linux:
+./linux mem=2048M umid=TEST ubd0=/home/mfrw/learning/uml/disk_image rw root=/dev/ubda con=null con0=null,fd:2 con1=fd:0,fd:1 vec0:transport=tap,ifname=tap0,depth=128,gro=1
+
+
+TODO: add more stuff here
